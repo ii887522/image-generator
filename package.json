@@ -1,0 +1,28 @@
+{
+  "name": "image-generator",
+  "version": "1.0.0",
+  "description": "It is a CLI tool used to generate many sample images with different sizes and colors for testing purposes.",
+  "main": "index.js",
+  "scripts": {
+    "install": "node build.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ii887522/image-generator.git"
+  },
+  "keywords": [
+    "CLI",
+    "image",
+    "generator"
+  ],
+  "author": "ii887522",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/ii887522/image-generator/issues"
+  },
+  "homepage": "https://gitlab.com/ii887522/image-generator#readme",
+  "dependencies": {
+    "@ii887522/packify": "^1.5.1"
+  }
+}

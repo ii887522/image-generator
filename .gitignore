@@ -1,0 +1,7 @@
+node_modules
+.vs
+Debug
+Release
+x64
+libs
+image-generator/Test
