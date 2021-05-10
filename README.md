@@ -5,6 +5,7 @@ It is a CLI tool used to generate many sample images with different sizes and co
 
 ## Table of Contents
 - [For developers reading this in GitHub](https://gitlab.com/ii887522/image-generator#for-developers-reading-this-in-github)
+- [Usage](https://gitlab.com/ii887522/image-generator#usage)
 - [Coding Style](https://gitlab.com/ii887522/image-generator#coding-style)
 - [Prerequisites](https://gitlab.com/ii887522/image-generator#prerequisites)
 - [Update .NET Framework SDK version used by ms-build-tools to match your OS](https://gitlab.com/ii887522/image-generator#update-net-framework-sdk-version-used-by-ms-build-tools-to-match-your-os)
@@ -17,6 +18,11 @@ It is a CLI tool used to generate many sample images with different sizes and co
 
 ## For developers reading this in GitHub
 Please go to https://gitlab.com/ii887522/image-generator to start contributing instead.
+
+## Usage
+```sh
+image-generator <output-directory-path>
+```
 
 ## Coding Style
 This project follows [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html). Please familiarize yourself with the rules provided
