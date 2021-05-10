@@ -1,6 +1,8 @@
 # image-generator
 It is a CLI tool used to generate many sample images with different sizes and colors for testing purposes.
 
+<img src="docs/images.png" alt="Images" width="770" /><br /><br />
+
 ## Table of Contents
 - [For developers reading this in GitHub](https://gitlab.com/ii887522/image-generator#for-developers-reading-this-in-github)
 - [Coding Style](https://gitlab.com/ii887522/image-generator#coding-style)
