@@ -13,7 +13,7 @@ dependencies(async () => {
     zip('https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-VC.zip'),
     zip('https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-devel-2.0.15-VC.zip'),
     zip('https://gitlab.com/api/v4/projects/23530641/packages/generic/nitro/1.0.2/nitro-1.0.2.zip', { 'PRIVATE-TOKEN': accessToken }),
-    zip('https://gitlab.com/api/v4/projects/23074770/packages/generic/viewify/1.0.4/viewify-1.0.4.zip', { 'PRIVATE-TOKEN': accessToken })
+    zip('https://gitlab.com/api/v4/projects/23074770/packages/generic/viewify/1.1.0/viewify-1.1.0.zip', { 'PRIVATE-TOKEN': accessToken })
   ])
   dll('x86', 'SDL2-2.0.12/lib/x86/SDL2.dll')
   dll('x64', 'SDL2-2.0.12/lib/X64/SDL2.dll')

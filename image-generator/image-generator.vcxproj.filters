@@ -14,18 +14,55 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Test Header Files">
-      <UniqueIdentifier>{ca22aac9-4527-4dd0-9e6e-7e76e50489fc}</UniqueIdentifier>
+      <UniqueIdentifier>{058cf5a4-0e86-411d-9428-a64e2345c595}</UniqueIdentifier>
     </Filter>
     <Filter Include="Test Source Files">
-      <UniqueIdentifier>{d046dfba-c9a0-4177-a6f7-33113489f61d}</UniqueIdentifier>
+      <UniqueIdentifier>{f7cfa85a-374d-4c32-b464-0997a7e492b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Functions">
+      <UniqueIdentifier>{85d255b6-9874-4def-923b-476423dc08e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ViewGroupFactory">
+      <UniqueIdentifier>{188e0100-52b8-4ab8-b267-ad4b287597e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Functions">
+      <UniqueIdentifier>{b8b56842-9bef-475e-9c31-c22a79341d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test Header Files\Functions">
+      <UniqueIdentifier>{3b7ef493-4df2-4e97-9aa1-899ca61ca5a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Test Source Files\Functions">
+      <UniqueIdentifier>{bcf4aedb-0b54-45ac-beef-20b0f4caedc1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main\main.cpp">
-      <Filter>Source Files</Filter>
+    <Image Include="res\main\favicon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\main\Functions\cli_ext.h">
+      <Filter>Header Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\main\ViewGroupFactory\ImageGeneratorViewGroupFactory.h">
+      <Filter>Header Files\ViewGroupFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\Functions\cli_ext.test.h">
+      <Filter>Test Header Files\Functions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main\Functions\cli_ext.cpp">
+      <Filter>Source Files\Functions</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\test.cpp">
-      <Filter>Test Source Files</Filter>
+    <ClCompile Include="src\main\Functions\main.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\Functions\cli_ext.test.cpp">
+      <Filter>Test Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\Functions\test.cpp">
+      <Filter>Test Source Files\Functions</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
