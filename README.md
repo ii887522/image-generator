@@ -23,6 +23,7 @@ Please go to https://gitlab.com/ii887522/image-generator to start contributing i
 ```sh
 image-generator <output-directory-path>
 ```
+`<output-directory-path>`: it must ends with either '/' or '\\'
 
 ## Coding Style
 This project follows [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html). Please familiarize yourself with the rules provided
