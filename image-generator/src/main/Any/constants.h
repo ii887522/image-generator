@@ -10,4 +10,4 @@ constexpr auto OUTPUT_DIRECTORY_PATH_INDEX{ 1u };
 
 }  // namespace ii887522::imageGenerator
 
-#endif
+#endif  // IMAGE_GENERATOR_SRC_MAIN_ANY_CONSTANTS_H_

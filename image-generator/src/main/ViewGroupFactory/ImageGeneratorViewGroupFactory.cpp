@@ -3,11 +3,9 @@
 #ifndef TEST
 
 #include "ImageGeneratorViewGroupFactory.h"
-#include <viewify/Factory/ViewGroupFactory.h>
-#include <string>
-#include <chrono>  // NOLINT(build/c++11)
-#include <viewify/View/ViewGroup.h>
 #include <SDL.h>
+#include <viewify/View/ViewGroup.h>
+#include <viewify/Factory/ViewGroupFactory.h>
 #include <viewify/Struct/Point.h>
 #include <viewify/Struct/Size.h>
 #include <viewify/Struct/Rect.h>
@@ -18,6 +16,8 @@
 #include <viewify/Functions/sdl_ext.h>
 #include <viewify/Any/View.h>
 #include <nitro/Functions/fs_ext.h>
+#include <string>
+#include <chrono>  // NOLINT(build/c++11)
 #include <vector>
 
 using std::string;
