@@ -2,16 +2,19 @@
 
 #ifndef TEST
 
-#include <Any/allocator.h>
-#include <Functions/control_flow.h>
+#define ALLOCATOR_IMPLEMENTATIONS
+#include <nitro/Any/allocator.h>
+
+#include <viewify/Functions/control_flow.h>
 #include <SDL.h>
-#include <Any/App.h>
-#include <Struct/Size.h>
-#include <Struct/Color.h>
+#include <viewify/Any/App.h>
+#include <viewify/Struct/Size.h>
+#include <viewify/Struct/Color.h>
 #include <iostream>
 #include <string>
 #include "../ViewGroupFactory/ImageGeneratorViewGroupFactory.h"
 #include "cli_ext.h"  // NOLINT(build/include_subdir)
+#include "../Any/constants.h"
 
 using ii887522::viewify::App;
 using ii887522::viewify::Size;
@@ -28,9 +31,8 @@ static int main(int argc, char** argv) {
     cerr << "Param <output-directory-path>: it must ends with either '/' or '\\'\n";
     return EXIT_FAILURE;
   }
-  constexpr auto viewCount{ 1u };  // See also Any/View.h for more details
-  ImageGeneratorViewGroupFactory<viewCount> imageGeneratorViewGroupFactory{ string{ argv[1u] } };  // See also View/ViewGroup.h for more details
-  eventLoop(App<viewCount>{ "Image Generator", Size{ 512, 512 }, Color{ 0u, 0u, 0u }, &imageGeneratorViewGroupFactory, SDL_WINDOW_MINIMIZED });
+  ImageGeneratorViewGroupFactory imageGeneratorViewGroupFactory{ string{ argv[OUTPUT_DIRECTORY_PATH_INDEX] } };  // See also View/ViewGroup.h for more details
+  eventLoop(App{ "Image Generator", Size{ 512, 512 }, Color{ 0u, 0u, 0u, 255u }, &imageGeneratorViewGroupFactory, SDL_WINDOW_MINIMIZED });
   return EXIT_SUCCESS;
 }
 
