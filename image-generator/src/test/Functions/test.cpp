@@ -2,7 +2,9 @@
 
 #ifdef TEST
 
-#include <Any/allocator.h>
+#define ALLOCATOR_IMPLEMENTATIONS
+#include <nitro/Any/allocator.h>
+
 #include "cli_ext.test.h"  // NOLINT(build/include_subdir)
 
 namespace ii887522::imageGenerator {
