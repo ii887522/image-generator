@@ -21,8 +21,10 @@ using std::string;
 
 namespace ii887522::imageGenerator {
 
-// Not Thread Safe: it must only be used in main thread
-// See also View/ViewGroup.h for more details
+/// <summary>
+///   <para>Not Thread Safe: it must only be used in main thread</para>
+///   <para>See also View/ViewGroup.h for more details</para>
+/// </summary>
 class ImageGeneratorViewGroupFactory final : public ViewGroupFactory {
   // remove copy semantics
   ImageGeneratorViewGroupFactory(const ImageGeneratorViewGroupFactory&) = delete;
@@ -40,12 +42,12 @@ class ImageGeneratorViewGroupFactory final : public ViewGroupFactory {
   unsigned int index;
 
  public:
-  // Param outDir: it must ends with '/' or '\\'
-  // See also View/ViewGroup.h for more details
+  /// <summary>See also View/ViewGroup.h for more details</summary>
+  /// <param name="outDir">It must ends with '/' or '\\'</param>
   explicit ImageGeneratorViewGroupFactory(const string& outDir);
 
-  // Param renderer: it must not be assigned to integer
-  // See also View/ViewGroup.h for more details
+  /// <summary>See also View/ViewGroup.h for more details</summary>
+  /// <param name="renderer">It must not be assigned to integer</param>
   ViewGroup make(SDL_Renderer*const renderer, const Size<int>&) override;
 };
 
