@@ -4,20 +4,16 @@ It is a CLI tool used to generate many sample images with different sizes and co
 <img src="docs/images.png" alt="Images" width="770" /><br /><br />
 
 ## Table of Contents
-- [For developers reading this in GitHub](https://gitlab.com/ii887522/image-generator#for-developers-reading-this-in-github)
-- [Usage](https://gitlab.com/ii887522/image-generator#usage)
-- [Coding Style](https://gitlab.com/ii887522/image-generator#coding-style)
-- [Prerequisites](https://gitlab.com/ii887522/image-generator#prerequisites)
-- [Update .NET Framework SDK version used by ms-build-tools to match your OS](https://gitlab.com/ii887522/image-generator#update-net-framework-sdk-version-used-by-ms-build-tools-to-match-your-os)
-- [Build custom-node docker image](https://gitlab.com/ii887522/image-generator#build-custom-node-docker-image)
-- [Build ms-build-tools docker image](https://gitlab.com/ii887522/image-generator#build-ms-build-tools-docker-image)
-- [Install dependencies](https://gitlab.com/ii887522/image-generator#install-dependencies)
-- [Set correct cpplint executable path in .vscode/settings.json](https://gitlab.com/ii887522/image-generator#set-correct-cpplint-executable-path-in-vscodesettingsjson)
-- [Build project](https://gitlab.com/ii887522/image-generator#build-project)
-- [Deploy project](https://gitlab.com/ii887522/image-generator#deploy-project)
-
-## For developers reading this in GitHub
-Please go to https://gitlab.com/ii887522/image-generator to start contributing instead.
+- [Usage](https://github.com/ii887522/image-generator#usage)
+- [Coding Style](https://github.com/ii887522/image-generator#coding-style)
+- [Prerequisites](https://github.com/ii887522/image-generator#prerequisites)
+- [Update .NET Framework SDK version used by ms-build-tools to match your OS](https://github.com/ii887522/image-generator#update-net-framework-sdk-version-used-by-ms-build-tools-to-match-your-os)
+- [Build custom-node docker image](https://github.com/ii887522/image-generator#build-custom-node-docker-image)
+- [Build ms-build-tools docker image](https://github.com/ii887522/image-generator#build-ms-build-tools-docker-image)
+- [Install dependencies](https://github.com/ii887522/image-generator#install-dependencies)
+- [Set correct cpplint executable path in .vscode/settings.json](https://github.com/ii887522/image-generator#set-correct-cpplint-executable-path-in-vscodesettingsjson)
+- [Build project](https://github.com/ii887522/image-generator#build-project)
+- [Deploy project](https://github.com/ii887522/image-generator#deploy-project)
 
 ## Usage
 ```sh
@@ -29,7 +25,7 @@ image-generator <output-directory-path>
 This project follows [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html). Please familiarize yourself with the rules provided
 in the coding style and make sure all the proposed code changes in your commits are conforming to the style before making a merge request. You can
 also make use of cpplint which is a [Visual Studio Code](https://code.visualstudio.com/) plugin and `build` command under the
-[Build project](https://gitlab.com/ii887522/image-generator#build-project) section to support you.
+[Build project](https://github.com/ii887522/image-generator#build-project) section to support you.
 
 ## Prerequisites
 - Windows 10
@@ -46,6 +42,8 @@ also make use of cpplint which is a [Visual Studio Code](https://code.visualstud
   - Extensions:
     - Markdown Editor
     - EditorConfig Language Service
+    - Line Endings Unifier
+    - Github Extension for Visual Studio
   - Workloads:
     - Desktop development with C++
   - Individual components:
