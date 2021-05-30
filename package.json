@@ -9,7 +9,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/ii887522/image-generator.git"
+    "url": "git+https://github.com/ii887522/image-generator.git"
   },
   "keywords": [
     "CLI",
@@ -19,10 +19,13 @@
   "author": "ii887522",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/ii887522/image-generator/issues"
+    "url": "https://github.com/ii887522/image-generator/issues"
   },
-  "homepage": "https://gitlab.com/ii887522/image-generator#readme",
+  "homepage": "https://github.com/ii887522/image-generator",
   "dependencies": {
-    "@ii887522/packify": "^1.5.1"
+    "@ii887522/packify": "^1.5.3",
+    "@octokit/request": "^5.4.15",
+    "archiver": "^5.3.0",
+    "fs-extra": "^10.0.0"
   }
 }
