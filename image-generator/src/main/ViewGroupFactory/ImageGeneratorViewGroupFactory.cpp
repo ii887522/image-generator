@@ -55,8 +55,8 @@ ViewGroup ImageGeneratorViewGroupFactory::make(SDL_Renderer*const renderer, cons
           rect.size = Size{ lengths(randomEngine), lengths(randomEngine) };
           color = Color{ colorComponents(randomEngine), colorComponents(randomEngine), colorComponents(randomEngine), alphaComponents(randomEngine) };
           ++i;
-          constexpr auto imageCount{ 64u };
-          return i != imageCount ? Action::NONE : Action::QUIT;
+          constexpr auto IMAGE_COUNT{ 64u };
+          return i != IMAGE_COUNT ? Action::NONE : Action::QUIT;
         }
       }
     };
