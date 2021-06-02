@@ -9,17 +9,22 @@ const { request } = octokitRequest
 
 const version = process.argv[2]
 const accessToken = process.argv[3]
+const projectName = 'image-generator'
+const bundleOutDirPath = 'libs/'
+const archiveExtensionName = 'zip'
+const appDirPath = `${bundleOutDirPath}${projectName}-${version}/`
 
 async function bundleCode() {
-  ensureDirSync(`libs/image-generator-${version}/`)
-  return copy('image-generator/Release/', `libs/image-generator-${version}/`, { recursive: true, filter: (src, dest) => {
+  ensureDirSync(appDirPath)
+  return copy(`${projectName}/Release/`, appDirPath, { recursive: true, filter: (src, dest) => {
     return src.endsWith('/') || src.endsWith('.dll') || src.endsWith('.exe')
   } })
 }
 
 async function bundleResources() {
-  ensureDirSync(`libs/image-generator-${version}/res/main/`)
-  return copy('image-generator/res/main/', `libs/image-generator-${version}/res/main/`, { recursive: true })
+  const resDirPath = `${appDirPath}res/main/`
+  ensureDirSync(resDirPath)
+  return copy(`${projectName}/res/main/`, resDirPath, { recursive: true })
 }
 
 async function bundle() {
@@ -30,23 +35,24 @@ async function bundle() {
 }
 
 async function zip() {
-  const archive = archiver('zip', { zlib: { level: 9 } })
+  const archive = archiver(archiveExtensionName, { zlib: { level: 9 } })
   archive.on('warning', err => {
     if (err.code == 'ENOENT') console.log(err)
     else throw err
   }).on('error', err => {
     throw err
-  }).pipe(createWriteStream(`libs/image-generator-${version}.zip`))
-  return archive.directory(`libs/image-generator-${version}/`, `image-generator-${version}/`).finalize()
+  }).pipe(createWriteStream(`${bundleOutDirPath}${projectName}-${version}.${archiveExtensionName}`))
+  return archive.directory(appDirPath, `${projectName}-${version}/`).finalize()
 }
 
 async function publish() {
+  const owner = 'ii887522'
   const result = await request('POST /repos/{owner}/{repo}/releases', {
     headers: {
       authorization: `token ${accessToken}`
     },
-    owner: 'ii887522',
-    repo: 'image-generator',
+    owner,
+    repo: projectName,
     tag_name: `v${version}`,
     name: `${version}`
   })
@@ -56,17 +62,17 @@ async function publish() {
       'content-type': 'application/zip'
     },
     baseUrl: 'https://uploads.github.com',
-    owner: 'ii887522',
-    repo: 'image-generator',
+    owner,
+    repo: projectName,
     release_id: result.data.id,
-    name: `image-generator-${version}.zip`,
-    data: await readFile(`libs/image-generator-${version}.zip`)
+    name: `${projectName}-${version}.${archiveExtensionName}`,
+    data: await readFile(`${bundleOutDirPath}${[projectName]}-${version}.${archiveExtensionName}`)
   })
 }
 
 function clean() {
-  remove(`libs/image-generator-${version}`)
-  remove(`libs/image-generator-${version}.zip`)
+  remove(`${bundleOutDirPath}${projectName}-${version}`)
+  remove(`${bundleOutDirPath}${projectName}-${version}.${archiveExtensionName}`)
 }
 
 (async () => {
