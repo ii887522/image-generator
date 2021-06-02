@@ -39,11 +39,11 @@ using std::vector;
 
 namespace ii887522::imageGenerator {
 
-ImageGeneratorViewGroupFactory::ImageGeneratorViewGroupFactory(const string& outDir) : ViewGroupFactory{ }, lengths{ 1, 256 }, colorComponents{ 32u, 224u }, alphaComponents{ 128u, 255u },
-  randomEngine{ static_cast<unsigned int>(high_resolution_clock::now().time_since_epoch().count()) }, outDir{ outDir }, index{ 0u } { }
+ImageGeneratorViewGroupFactory::ImageGeneratorViewGroupFactory(const string& outDirPath) : ViewGroupFactory{ }, lengths{ 1, 256 }, colorComponents{ 32u, 224u }, alphaComponents{ 128u, 255u },
+  randomEngine{ static_cast<unsigned int>(high_resolution_clock::now().time_since_epoch().count()) }, outDirPath{ outDirPath }, i{ 0u } { }
 
 ViewGroup ImageGeneratorViewGroupFactory::make(SDL_Renderer*const renderer, const Size<int>&) {
-  emptyDir(outDir);
+  emptyDir(outDirPath);
   return ViewGroup{ renderer, Point{ 0, 0 }, [this](ViewGroup&, SDL_Renderer*const renderer) {
     return vector<View*>{
       new RectView{
@@ -51,12 +51,12 @@ ViewGroup ImageGeneratorViewGroupFactory::make(SDL_Renderer*const renderer, cons
           Size{ lengths(randomEngine), lengths(randomEngine) },
           Color{ colorComponents(randomEngine), colorComponents(randomEngine), colorComponents(randomEngine), alphaComponents(randomEngine) }
         }, [this, renderer](Rect<int>& rect, Color<unsigned int>& color) {
-          snapshot(renderer, rect, outDir + to_string(index) + ".png");
+          snapshot(renderer, rect, outDirPath + to_string(i) + ".png");
           rect.size = Size{ lengths(randomEngine), lengths(randomEngine) };
           color = Color{ colorComponents(randomEngine), colorComponents(randomEngine), colorComponents(randomEngine), alphaComponents(randomEngine) };
-          ++index;
+          ++i;
           constexpr auto imageCount{ 64u };
-          return index != imageCount ? Action::NONE : Action::QUIT;
+          return i != imageCount ? Action::NONE : Action::QUIT;
         }
       }
     };

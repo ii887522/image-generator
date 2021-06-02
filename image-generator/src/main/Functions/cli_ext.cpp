@@ -9,7 +9,7 @@ using std::string;
 namespace ii887522::imageGenerator {
 
 bool isValid(int argc, char** argv) {
-  return argc == 2 && (string{ argv[OUTPUT_DIRECTORY_PATH_INDEX] }.ends_with('/') || string{ argv[OUTPUT_DIRECTORY_PATH_INDEX] }.ends_with('\\'));
+  return argc == COMMAND_LINE_ARGS_REQUIRED + 1u && (string{ argv[OUTPUT_DIRECTORY_PATH_I] }.ends_with('/') || string{ argv[OUTPUT_DIRECTORY_PATH_I] }.ends_with('\\'));
 }
 
 }  // namespace ii887522::imageGenerator

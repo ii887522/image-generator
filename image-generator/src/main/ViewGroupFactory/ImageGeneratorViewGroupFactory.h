@@ -23,7 +23,7 @@ namespace ii887522::imageGenerator {
 
 /// <summary>
 ///   <para>Not Thread Safe: it must only be used in main thread</para>
-///   <para>See also View/ViewGroup.h for more details</para>
+///   <para>See also viewify/View/ViewGroup.h for more details</para>
 /// </summary>
 class ImageGeneratorViewGroupFactory final : public ViewGroupFactory {
   // remove copy semantics
@@ -38,15 +38,15 @@ class ImageGeneratorViewGroupFactory final : public ViewGroupFactory {
   uniform_int_distribution<unsigned int> colorComponents;
   uniform_int_distribution<unsigned int> alphaComponents;
   default_random_engine randomEngine;
-  const string outDir;
-  unsigned int index;
+  const string outDirPath;
+  unsigned int i;
 
  public:
-  /// <summary>See also View/ViewGroup.h for more details</summary>
-  /// <param name="outDir">It must ends with '/' or '\\'</param>
-  explicit ImageGeneratorViewGroupFactory(const string& outDir);
+  /// <summary>See also viewify/View/ViewGroup.h for more details</summary>
+  /// <param name="outDirPath">It must ends with '/' or '\\'</param>
+  explicit ImageGeneratorViewGroupFactory(const string& outDirPath);
 
-  /// <summary>See also View/ViewGroup.h for more details</summary>
+  /// <summary>See also viewify/View/ViewGroup.h for more details</summary>
   /// <param name="renderer">It must not be assigned to integer</param>
   ViewGroup make(SDL_Renderer*const renderer, const Size<int>&) override;
 };
