@@ -11,7 +11,7 @@ namespace ii887522::imageGenerator {
 
 static int main() {
   testCliExt();
-  return 0;
+  return EXIT_SUCCESS;
 }
 
 }  // namespace ii887522::imageGenerator

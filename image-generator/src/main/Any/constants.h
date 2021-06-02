@@ -5,8 +5,9 @@
 
 namespace ii887522::imageGenerator {
 
-constexpr auto PROGRAM_NAME_INDEX{ 0u };
-constexpr auto OUTPUT_DIRECTORY_PATH_INDEX{ 1u };
+constexpr auto COMMAND_LINE_ARGS_REQUIRED{ 1u };
+constexpr auto PROGRAM_NAME_I{ 0u };
+constexpr auto OUTPUT_DIRECTORY_PATH_I{ 1u };
 
 }  // namespace ii887522::imageGenerator
 
