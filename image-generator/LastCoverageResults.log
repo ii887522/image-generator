@@ -1,0 +1,21 @@
+[2021-06-03 20:27:13] [info] Start Program:
+Path:"C:\\i\\repos\\image-generator\\image-generator\\x64\\Test\\image-generator.exe"
+Arguments:
+Working directory: "C:\\i\\repos\\image-generator\\image-generator\\"
+Modules: Selected: C:\i\repos\image-generator\image-generator\x64\Test\image-generator.exe Excluded: 
+Sources: Selected: C:\i\repos\image-generator\image-generator Excluded: 
+Log Level: Normal
+Cover Children: 1
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: binary C:\Program Files\KMSpico\temp\0uxsqr4v.aqb 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2021-06-03 20:27:13] [info] Module: C:\i\repos\image-generator\image-generator\x64\Test\image-generator.exe is selected because it matches selected pattern: C:\i\repos\image-generator\image-generator\x64\Test\image-generator.exe
+[2021-06-03 20:27:13] [info] ----------------------------------------------------
+[2021-06-03 20:27:13] [info] Coverage binary generated in file: C:\Program Files\KMSpico\temp\0uxsqr4v.aqb
+[2021-06-03 20:27:13] [info] ----------------------------------------------------
