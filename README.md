@@ -44,6 +44,7 @@ also make use of cpplint which is a [Visual Studio Code](https://code.visualstud
     - EditorConfig Language Service
     - Line Endings Unifier
     - Github Extension for Visual Studio
+    - OpenCppCoverage Plugin
   - Workloads:
     - Desktop development with C++
   - Individual components:
