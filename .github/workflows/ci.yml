@@ -82,7 +82,7 @@ jobs:
         with:
           path: |
             **\Test
-          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name), format('{0}\{0}.vcxproj', env.project-name)) }}
       - name: Use MSBuild
         if: steps.outputs-cache.outputs.cache-hit != 'true'
         uses: microsoft/setup-msbuild@v1.0.2
@@ -101,7 +101,7 @@ jobs:
         with:
           path: |
             **\Test
-          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name), format('{0}\{0}.vcxproj', env.project-name)) }}
       - name: Test x86
         run: |
           cd ${{ env.project-name }}
@@ -130,7 +130,7 @@ jobs:
           path: |
             **\Debug
             **\Release
-          key: ${{ runner.os }}-cpp-build-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name), format('{0}\{0}.vcxproj', env.project-name)) }}
       - name: Use MSBuild
         if: steps.outputs-cache.outputs.cache-hit != 'true'
         uses: microsoft/setup-msbuild@v1.0.2
@@ -173,7 +173,7 @@ jobs:
           path: |
             **\Debug
             **\Release
-          key: ${{ runner.os }}-cpp-build-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name), format('{0}\{0}.vcxproj', env.project-name)) }}
       - name: Install dependencies
         run: npm ci
       - run: node deploy.js 1.0.2 ${{ secrets.DEPLOY_TOKEN }}
