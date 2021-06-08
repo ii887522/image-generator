@@ -44,7 +44,7 @@ ImageGeneratorViewGroupFactory::ImageGeneratorViewGroupFactory(const string& out
 
 ViewGroup ImageGeneratorViewGroupFactory::make(SDL_Renderer*const renderer, const Size<int>&) {
   emptyDir(outDirPath);
-  return ViewGroup{ renderer, Point{ 0, 0 }, [this](ViewGroup&, SDL_Renderer*const renderer) {
+  return ViewGroup{ renderer, Point{ 0, 0 }, [this](ViewGroup*const, SDL_Renderer*const renderer) {
     return vector<View*>{
       new RectView{
         renderer, Point{ 0, 0 }, Paint{
