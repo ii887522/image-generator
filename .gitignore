@@ -1,7 +1,12 @@
-node_modules
 .vs
-Debug
-Release
-x64
+node_modules
 libs
-image-generator/Test
+image-generator/**/*.dll
+image-generator/**/*.tlog
+image-generator/**/*.*obj
+image-generator/**/*.idb
+image-generator/**/*.*pdb
+image-generator/**/*.exe*
+image-generator/**/*.ilk
+image-generator/**/*.log
+image-generator/**/*.FileListAbsolute.txt

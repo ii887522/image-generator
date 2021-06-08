@@ -1,0 +1,180 @@
+name: CI
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+    branches: [master, develop]
+
+env:
+  project-name: 'image-generator'
+  python-version: '3.7'
+  node-version: '14.x'
+
+jobs:
+  lint:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.node-version }}
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~\AppData\Local\pip\Cache
+            env
+            ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-node-virtualenv-cpplint-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-node-
+            ${{ runner.os }}-
+      - name: Cache libs
+        uses: actions/cache@v2
+        with:
+          path: libs
+          key: ${{ runner.os }}-node-${{ hashFiles('build.js') }}
+      - name: Use Python
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.python-version }}
+      - name: Install virtualenv
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: python -m pip install virtualenv
+      - name: Create a virtual environment
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: virtualenv env
+      - name: Install cpplint
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          env\Scripts\activate
+          python -m pip install cpplint
+          env\Scripts\deactivate
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint project
+        run: |
+          env\Scripts\activate
+          cpplint --recursive --linelength=256 ${{ env.project-name }}\src\
+          exit $LASTEXITCODE
+          env\Scripts\deactivate
+  build-test-app:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Cache libs
+        uses: actions/cache@v2
+        with:
+          path: libs
+          key: ${{ runner.os }}-node-${{ hashFiles('build.js') }}
+      - name: Cache outputs
+        id: outputs-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            **\Test
+          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+      - name: Use MSBuild
+        if: steps.outputs-cache.outputs.cache-hit != 'true'
+        uses: microsoft/setup-msbuild@v1.0.2
+      - if: steps.outputs-cache.outputs.cache-hit != 'true'
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=ConsoleTest /p:Platform=x86
+      - if: steps.outputs-cache.outputs.cache-hit != 'true'
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=ConsoleTest /p:Platform=x64
+    needs: lint
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Cache outputs
+        uses: actions/cache@v2
+        with:
+          path: |
+            **\Test
+          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+      - name: Test x86
+        run: |
+          cd ${{ env.project-name }}
+          Test\${{ env.project-name }}
+          cd ..
+      - name: Test x64
+        run: |
+          cd ${{ env.project-name }}
+          x64\Test\${{ env.project-name }}
+          cd ..
+    needs: build-test-app
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Cache libs
+        uses: actions/cache@v2
+        with:
+          path: libs
+          key: ${{ runner.os }}-node-${{ hashFiles('build.js') }}
+      - name: Cache outputs
+        id: outputs-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            **\Debug
+            **\Release
+          key: ${{ runner.os }}-cpp-build-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+      - name: Use MSBuild
+        if: steps.outputs-cache.outputs.cache-hit != 'true'
+        uses: microsoft/setup-msbuild@v1.0.2
+      - if: steps.outputs-cache.outputs.cache-hit != 'true'
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=Debug /p:Platform=x86
+      - if: steps.outputs-cache.outputs.cache-hit != 'true'
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=Debug /p:Platform=x64
+      - if: steps.outputs-cache.outputs.cache-hit != 'true'
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=Release /p:Platform=x86
+      - if: steps.outputs-cache.outputs.cache-hit != 'true'
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=Release /p:Platform=x64
+    needs: lint
+  deploy:
+    if: github.base_ref == 'master'
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.node-version }}
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~\AppData\Local\pip\Cache
+            env
+            ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-node-virtualenv-cpplint-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-node-
+            ${{ runner.os }}-
+      - name: Cache outputs
+        uses: actions/cache@v2
+        with:
+          path: |
+            **\Debug
+            **\Release
+          key: ${{ runner.os }}-cpp-build-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name)) }}
+      - name: Install dependencies
+        run: npm ci
+      - run: node deploy.js 1.0.2 ${{ secrets.DEPLOY_TOKEN }}
+    needs: [test, build]
