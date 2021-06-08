@@ -101,7 +101,7 @@ jobs:
         with:
           path: |
             **\Test
-          key: key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name), format('{0}\{0}.vcxproj', env.project-name)) }}
+          key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name), format('{0}\{0}.vcxproj', env.project-name)) }}
       - name: Test x86
         run: |
           cd ${{ env.project-name }}
