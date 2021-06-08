@@ -87,9 +87,9 @@ jobs:
         if: steps.outputs-cache.outputs.cache-hit != 'true'
         uses: microsoft/setup-msbuild@v1.0.2
       - if: steps.outputs-cache.outputs.cache-hit != 'true'
-        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=ConsoleTest /p:Platform=x86
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=Test /p:Platform=x86
       - if: steps.outputs-cache.outputs.cache-hit != 'true'
-        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=ConsoleTest /p:Platform=x64
+        run: msbuild ${{ env.project-name }}\${{ env.project-name }}.sln /p:Configuration=Test /p:Platform=x64
     needs: lint
   test:
     runs-on: windows-latest

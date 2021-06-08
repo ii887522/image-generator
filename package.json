@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/ii887522/image-generator",
   "dependencies": {
-    "@ii887522/packify": "^1.5.3",
-    "@octokit/request": "^5.4.15",
+    "@ii887522/packify": "^1.5.6",
+    "@octokit/request": "^5.5.0",
     "archiver": "^5.3.0",
     "fs-extra": "^10.0.0"
   }
