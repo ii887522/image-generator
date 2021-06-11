@@ -2,8 +2,8 @@
 
 #ifdef TEST
 
-#include <catch.hpp>
 #include <cstring>
+#include <catch.hpp>
 #include "../../main/Functions/cli_ext.h"
 #include "../../main/Any/constants.h"
 
