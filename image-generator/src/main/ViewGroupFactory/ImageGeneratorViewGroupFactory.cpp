@@ -4,18 +4,8 @@
 
 #include "ImageGeneratorViewGroupFactory.h"
 #include <SDL.h>
-#include <viewify/View/ViewGroup.h>
-#include <viewify/Factory/ViewGroupFactory.h>
-#include <viewify/Struct/Point.h>
-#include <viewify/Struct/Size.h>
-#include <viewify/Struct/Rect.h>
-#include <viewify/Struct/Paint.h>
-#include <viewify/View/RectView.h>
-#include <viewify/Struct/Color.h>
-#include <viewify/Any/Enums.h>
-#include <viewify/Functions/sdl_ext.h>
-#include <viewify/Any/View.h>
-#include <nitro/Functions/fs_ext.h>
+#include <viewify/viewify.h>
+#include <nitro/nitro.h>
 #include <string>
 #include <chrono>  // NOLINT(build/c++11)
 #include <vector>
