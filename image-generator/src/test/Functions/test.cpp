@@ -3,21 +3,9 @@
 #ifdef TEST
 
 #define ALLOCATOR_IMPLEMENTATIONS
-#include <nitro/Any/allocator.h>
+#include <nitro/nitro.h>
 
-#include "cli_ext.test.h"  // NOLINT(build/include_subdir)
-
-namespace ii887522::imageGenerator {
-
-static int main() {
-  testCliExt();
-  return EXIT_SUCCESS;
-}
-
-}  // namespace ii887522::imageGenerator
-
-int main() {
-  return ii887522::imageGenerator::main();
-}
+#define CATCH_CONFIG_MAIN
+#include <catch.hpp>
 
 #endif

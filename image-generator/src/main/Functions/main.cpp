@@ -3,14 +3,10 @@
 #ifndef TEST
 
 #define ALLOCATOR_IMPLEMENTATIONS
-#include <nitro/Any/allocator.h>
+#include <nitro/nitro.h>
 
-#include <viewify/Functions/control_flow.h>
-#include <viewify/Any/Subsystems.h>
+#include <viewify/viewify.h>
 #include <SDL.h>
-#include <viewify/Any/App.h>
-#include <viewify/Struct/Size.h>
-#include <viewify/Struct/Color.h>
 #include <iostream>
 #include <string>
 #include "../ViewGroupFactory/ImageGeneratorViewGroupFactory.h"

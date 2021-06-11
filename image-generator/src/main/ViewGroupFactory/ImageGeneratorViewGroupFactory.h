@@ -5,10 +5,8 @@
 
 #ifndef TEST
 
-#include <viewify/Factory/ViewGroupFactory.h>
-#include <viewify/View/ViewGroup.h>
+#include <viewify/viewify.h>
 #include <SDL.h>
-#include <viewify/Struct/Size.h>
 #include <random>
 #include <string>
 
