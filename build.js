@@ -11,8 +11,10 @@ options.x64DllOutDirPaths = [`${projectDirPath}x64/Debug/`, `${projectDirPath}x6
 const sdl2Version = '2.0.12'
 const sdl2ImageVersion = '2.0.5'
 const sdl2TTFVersion = '2.0.15'
-const nitroVersion = '1.3.2'
-const viewifyVersion = '1.6.2'
+const nitroVersion = '1.4.1'
+const viewifyVersion = '1.7.0'
+const texturePackerVersion = '1.1.5'
+const fontPackerVersion = '1.2.3'
 
 dependencies(async () => {
   await Promise.all([
@@ -21,6 +23,8 @@ dependencies(async () => {
     zip(`https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-devel-${sdl2TTFVersion}-VC.zip`),
     zip(`https://github.com/ii887522/nitro/releases/download/v${nitroVersion}/nitro-${nitroVersion}.zip`),
     zip(`https://github.com/ii887522/viewify/releases/download/v${viewifyVersion}/viewify-${viewifyVersion}.zip`),
+    zip(`https://github.com/ii887522/texture-packer/releases/download/v${texturePackerVersion}/texture-packer-${texturePackerVersion}.zip`),
+    zip(`https://github.com/ii887522/font-packer/releases/download/v${fontPackerVersion}/font-packer-${fontPackerVersion}.zip`),
     file('https://github.com/catchorg/Catch2/releases/download/v2.13.6/catch.hpp')
   ])
   dll('x86', `SDL2-${sdl2Version}/lib/x86/SDL2.dll`)
