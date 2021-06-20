@@ -10,3 +10,4 @@ image-generator/**/*.exe*
 image-generator/**/*.ilk
 image-generator/**/*.log
 image-generator/**/*.FileListAbsolute.txt
+image-generator/**/*.json*
