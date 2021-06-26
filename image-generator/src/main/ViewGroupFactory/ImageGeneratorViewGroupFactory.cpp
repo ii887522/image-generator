@@ -20,17 +20,17 @@ using ii887522::viewify::Rect;
 using ii887522::viewify::Paint;
 using ii887522::viewify::Color;
 using ii887522::viewify::RectView;
-using ii887522::viewify::Action;
 using ii887522::viewify::snapshot;
 using ii887522::viewify::View;
 using ii887522::nitro::emptyDir;
+using ii887522::nitro::Action;
 using std::to_string;
 using std::vector;
 
 namespace ii887522::imageGenerator {
 
-ImageGeneratorViewGroupFactory::ImageGeneratorViewGroupFactory(const string& outDirPath) : ViewGroupFactory{ }, lengths{ 1, 256 }, colorComponents{ 32u, 224u }, alphaComponents{ 128u, 255u },
-  randomEngine{ static_cast<unsigned int>(high_resolution_clock::now().time_since_epoch().count()) }, outDirPath{ outDirPath }, i{ 0u } { }
+ImageGeneratorViewGroupFactory::ImageGeneratorViewGroupFactory(const string& outDirPath) : ViewGroupFactory{ }, lengths{ 1, 256 }, colorComponents{ 32u, 224u },
+  alphaComponents{ 128u, 255u }, randomEngine{ static_cast<unsigned int>(high_resolution_clock::now().time_since_epoch().count()) }, outDirPath{ outDirPath }, i{ 0u } { }
 
 ViewGroup ImageGeneratorViewGroupFactory::make(SDL_Renderer*const renderer, const Size<int>&) {
   emptyDir(outDirPath);
