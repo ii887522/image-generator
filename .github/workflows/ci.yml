@@ -176,5 +176,5 @@ jobs:
           key: ${{ runner.os }}-cpp-${{ hashFiles(format('{0}\res\**\*', env.project-name), format('{0}\src\**\*', env.project-name), format('{0}\{0}.vcxproj', env.project-name)) }}
       - name: Install dependencies
         run: npm ci
-      - run: node deploy.js 1.0.2 ${{ secrets.DEPLOY_TOKEN }}
+      - run: node deploy.js 1.0.3 ${{ secrets.DEPLOY_TOKEN }}
     needs: [test, build]

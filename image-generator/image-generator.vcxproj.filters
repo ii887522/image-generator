@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Test Header Files">
-      <UniqueIdentifier>{058cf5a4-0e86-411d-9428-a64e2345c595}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Test Source Files">
       <UniqueIdentifier>{f7cfa85a-374d-4c32-b464-0997a7e492b5}</UniqueIdentifier>
     </Filter>
@@ -27,9 +24,6 @@
     </Filter>
     <Filter Include="Source Files\Functions">
       <UniqueIdentifier>{b8b56842-9bef-475e-9c31-c22a79341d9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Test Header Files\Functions">
-      <UniqueIdentifier>{3b7ef493-4df2-4e97-9aa1-899ca61ca5a8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Test Source Files\Functions">
       <UniqueIdentifier>{bcf4aedb-0b54-45ac-beef-20b0f4caedc1}</UniqueIdentifier>
@@ -52,9 +46,6 @@
     </ClInclude>
     <ClInclude Include="src\main\ViewGroupFactory\ImageGeneratorViewGroupFactory.h">
       <Filter>Header Files\ViewGroupFactory</Filter>
-    </ClInclude>
-    <ClInclude Include="src\test\Functions\cli_ext.test.h">
-      <Filter>Test Header Files\Functions</Filter>
     </ClInclude>
     <ClInclude Include="src\main\Any\constants.h">
       <Filter>Header Files\Any</Filter>
