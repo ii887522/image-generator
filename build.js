@@ -11,8 +11,8 @@ options.x64DllOutDirPaths = [`${projectDirPath}x64/Debug/`, `${projectDirPath}x6
 const sdl2Version = '2.0.12'
 const sdl2ImageVersion = '2.0.5'
 const sdl2TTFVersion = '2.0.15'
-const nitroVersion = '1.4.1'
-const viewifyVersion = '1.7.0'
+const nitroVersion = '1.4.3'
+const viewifyVersion = '1.7.2'
 const texturePackerVersion = '1.1.5'
 const fontPackerVersion = '1.2.3'
 

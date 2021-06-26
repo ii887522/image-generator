@@ -13,11 +13,13 @@
 #include "cli_ext.h"  // NOLINT(build/include_subdir)
 #include "../Any/constants.h"
 
+using ii887522::nitro::AnimationController;
 using ii887522::viewify::Subsystems;
 using ii887522::viewify::App;
 using ii887522::viewify::Size;
 using ii887522::viewify::Color;
-using ii887522::viewify::eventLoop;
+using ii887522::viewify::EventLoopBuilder;
+using ii887522::viewify::EventLoopFlag;
 using ii887522::viewify::Paint;
 using std::cerr;
 using std::string;
@@ -31,8 +33,10 @@ static int main(int argc, char** argv) {
     return EXIT_FAILURE;
   }
   const Subsystems subsystems;
+  AnimationController animationController;
   ImageGeneratorViewGroupFactory imageGeneratorViewGroupFactory{ string{ argv[OUTPUT_DIRECTORY_PATH_I] } };  // See also viewify/View/ViewGroup.h for more details
-  eventLoop(App::Builder{ "Image Generator", Paint{ Size{ 512, 512 }, Color{ 0u, 0u, 0u, 255u } }, SDL_WINDOW_MINIMIZED }.setSceneFactory(&imageGeneratorViewGroupFactory).build());
+  App app{ App::Builder{ "Image Generator", Paint{ Size{ 512, 512 }, Color{ 0u, 0u, 0u, 255u } }, SDL_WINDOW_MINIMIZED }.setSceneFactory(&imageGeneratorViewGroupFactory).build() };
+  EventLoopBuilder{ EventLoopFlag::ALWAYS_ANIMATE }.setApp(&app).setAnimationController(&animationController).build();
   return EXIT_SUCCESS;
 }
 
