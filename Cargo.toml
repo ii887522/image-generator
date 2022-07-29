@@ -1,0 +1,53 @@
+[package]
+name = "image-generator"
+version = "0.1.0"
+edition = "2021"
+description = "A CLI tool used to generate many sample images with different sizes and colors for testing purposes."
+repository = "https://github.com/ii887522/image-generator"
+license = "MIT"
+keywords = ["sample", "image", "generator", "cli", "desktop"]
+exclude = [
+  ".github/*",
+  ".vscode/*",
+  ".editorconfig",
+  ".gitignore",
+  "CODE_OF_CONDUCT.md",
+  "glslangValidator.exe",
+  "LICENSE",
+  "README.md",
+  "rustfmt.toml"
+]
+
+[package.metadata.vcpkg]
+git = "https://github.com/microsoft/vcpkg"
+rev = "a2d8a7cbb15cac91d6c59cd967ef9d85105832c3"
+dependencies = ["sdl2"]
+
+[package.metadata.vcpkg.target]
+x86_64-pc-windows-msvc = { triplet = "x64-windows-static-md" }
+
+[profile.release]
+strip = "symbols"
+lto = true
+codegen-units = 1
+
+[dependencies]
+async-std = "1.11.0"
+futures = "0.3.21"
+gl = "0.14.0"
+iron-ingot = "0.7.0"
+num_cpus = "1.13.1"
+png = "0.17.5"
+rand = "0.8.5"
+rayon = "1.5.3"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3.9", features = ["shellscalingapi"] }
+
+[dependencies.sdl2]
+version = "0.35.2"
+default-features = false
+features = [
+  "static-link",
+  "use-vcpkg"
+]
