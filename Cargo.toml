@@ -17,6 +17,7 @@ exclude = [
   "README.md",
   "rustfmt.toml"
 ]
+build = "build.rs"
 
 [package.metadata.vcpkg]
 git = "https://github.com/microsoft/vcpkg"
@@ -51,3 +52,6 @@ features = [
   "static-link",
   "use-vcpkg"
 ]
+
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1.12"
