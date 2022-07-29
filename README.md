@@ -5,6 +5,8 @@
 [![made-with-rust](https://img.shields.io/badge/Made%20with-Rust-1f425f.svg)](https://www.rust-lang.org/)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
+![Image generator sample output](docs/sample-output.png)
+
 A CLI tool used to generate many sample images with different sizes and colors for testing purposes.
 
 ## Table of contents
