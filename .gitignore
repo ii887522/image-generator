@@ -1,13 +1,3 @@
-.vs
-node_modules
-libs
-image-generator/**/*.dll
-image-generator/**/*.tlog
-image-generator/**/*.*obj
-image-generator/**/*.idb
-image-generator/**/*.*pdb
-image-generator/**/*.exe*
-image-generator/**/*.ilk
-image-generator/**/*.log
-image-generator/**/*.FileListAbsolute.txt
-image-generator/**/*.json*
+Cargo.lock
+/out
+/target

@@ -1,117 +1,88 @@
 # image-generator
-It is a CLI tool used to generate many sample images with different sizes and colors for testing purposes.
+[![Semantic Versioning 2.0.0](https://img.shields.io/badge/semver-2.0.0-standard.svg)](https://semver.org/)
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+[![made-with-rust](https://img.shields.io/badge/Made%20with-Rust-1f425f.svg)](https://www.rust-lang.org/)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-<img src="docs/images.png" alt="Images" width="770" /><br /><br />
+A CLI tool used to generate many sample images with different sizes and colors for testing purposes.
 
-## Table of Contents
-- [Usage](https://github.com/ii887522/image-generator#usage)
-- [Coding Style](https://github.com/ii887522/image-generator#coding-style)
+## Table of contents
 - [Prerequisites](https://github.com/ii887522/image-generator#prerequisites)
-- [Update .NET Framework SDK version used by ms-build-tools to match your OS](https://github.com/ii887522/image-generator#update-net-framework-sdk-version-used-by-ms-build-tools-to-match-your-os)
-- [Build custom-node docker image](https://github.com/ii887522/image-generator#build-custom-node-docker-image)
-- [Build ms-build-tools docker image](https://github.com/ii887522/image-generator#build-ms-build-tools-docker-image)
-- [Install dependencies](https://github.com/ii887522/image-generator#install-dependencies)
-- [Set correct cpplint executable path in .vscode/settings.json](https://github.com/ii887522/image-generator#set-correct-cpplint-executable-path-in-vscodesettingsjson)
-- [Build project](https://github.com/ii887522/image-generator#build-project)
-- [Deploy project](https://github.com/ii887522/image-generator#deploy-project)
-
-## Usage
-```sh
-image-generator <output-directory-path>
-```
-`<output-directory-path>`: it must ends with either '/' or '\\'
-
-## Coding Style
-This project follows [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html). Please familiarize yourself with the rules provided
-in the coding style and make sure all the proposed code changes in your commits are conforming to the style before making a merge request. You can
-also make use of cpplint which is a [Visual Studio Code](https://code.visualstudio.com/) plugin and `build` command under the
-[Build project](https://github.com/ii887522/image-generator#build-project) section to support you.
+- [Format the project](https://github.com/ii887522/image-generator#format-the-project)
+- [Automatically format the project on change](https://github.com/ii887522/image-generator#automatically-format-the-project-on-change)
+- [Lint the project](https://github.com/ii887522/image-generator#lint-the-project)
+- [Automatically lint the project on change](https://github.com/ii887522/image-generator#automatically-lint-the-project-on-change)
+- [Build the vcpkg dependencies in the project](https://github.com/ii887522/image-generator#build-the-vcpkg-dependencies-in-the-project)
+- [Build the project](https://github.com/ii887522/image-generator#build-the-project)
+- [Automatically build the project on change](https://github.com/ii887522/image-generator#automatically-build-the-project-on-change)
+- [Test the project](https://github.com/ii887522/image-generator#test-the-project)
+- [Automatically test the project on change](https://github.com/ii887522/image-generator#automatically-test-the-project-on-change)
+- [Run the project](https://github.com/ii887522/image-generator#run-the-project)
 
 ## Prerequisites
-- Windows 10
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) using Windows containers
-- [Visual Studio Code](https://code.visualstudio.com/)
-  - C/C++
-  - cpplint
-  - Docker
+- Windows 11 or Linux
+- [Visual Studio Code](https://code.visualstudio.com/) with plugins:
+  - Better TOML
+  - CodeLLDB
   - EditorConfig for VS Code
+  - GLSL Lint
   - Markdown All in One
-  - Remote - WSL
+  - rust-analyzer
+  - Shader languages support for VS Code
   - YAML
-- [Visual Studio Community 2019](https://visualstudio.microsoft.com/) and later
-  - Extensions:
-    - Markdown Editor
-    - EditorConfig Language Service
-    - Line Endings Unifier
-    - Github Extension for Visual Studio
-    - OpenCppCoverage Plugin
-  - Workloads:
-    - Desktop development with C++
-  - Individual components:
-    - JavaScript and TypeScript language support
-    - Git for Windows
-- [Python 3.9.1](https://www.python.org/downloads/) and later
+- [Rust 1.61.0](https://www.rust-lang.org/) and later
+- [rustfmt 1.4.38](https://github.com/rust-lang/rustfmt) and later
+- [clippy 0.1.60](https://github.com/rust-lang/rust-clippy) and later
+- [cargo-watch 8.1.1](https://github.com/watchexec/cargo-watch) and later
+- [cargo-vcpkg 0.1.6](https://crates.io/crates/cargo-vcpkg) and later
 
-## Update .NET Framework SDK version used by ms-build-tools to match your OS
-1. Left click on the start button at the bottom left corner of your desktop.
-
-  <img src="docs/start-button.png" alt="Start button" width="770" /><br /><br />
-
-2. Left click on the settings button at the left side of the start menu.
-
-  <img src="docs/settings.png" alt="Settings" width="770" /><br /><br />
-
-3. Left click on the system button at the top left corner of settings window.
-
-  <img src="docs/system.png" alt="System" width="770" /><br /><br />
-
-4. Left click on the about button at the bottom left corner of settings window.
-
-  <img src="docs/about.png" alt="About" width="770" /><br /><br />
-
-5. Take note of the version shown in the settings window. You will need it to search for appropriate tags later.
-
-  <img src="docs/version.png" alt="Version" width="770" /><br /><br />
-
-6. Go to https://hub.docker.com/_/microsoft-dotnet-framework-sdk/ and find Full Tag Listing section.
-7. Copy a tag that contains the version you have taken note of under Full Tag Listing section.
-8. Finally, inside the repository, navigate to `ms-build-tools/Dockerfile`. Then, paste to replace the tag as highlighted and shown in the screenshot below and save it.
-
-  <img src="docs/tag.png" alt="Tag" width="770" /><br /><br />
-
-## Build custom-node docker image
+## Format the project
 ```sh
-cd custom-node
-build
-cd ..
+cargo fmt
 ```
 
-## Build ms-build-tools docker image
+## Automatically format the project on change
 ```sh
-cd ms-build-tools
-build
-cd ..
+cargo watch -x fmt
 ```
 
-## Install dependencies
+## Lint the project
 ```sh
-install
+cargo clippy --all-features
 ```
 
-## Set correct cpplint executable path in `.vscode/settings.json`
-1. In the explorer panel of [Visual Studio Code](https://code.visualstudio.com/), navigate to `env\Scripts\` or `env/bin/` in the project directory
-and find the cpplint executable.
-2. Right click on the cpplint executable and click on Copy Path to copy its absolute path.
-3. In the explorer panel of [Visual Studio Code](https://code.visualstudio.com/), navigate to `.vscode/settings.json` in the project directory and
-open it.
-4. Finally, paste the absolute path as a string value of `"cpplint.cpplintPath"` in `settings.json` and save it.
-
-### Build project
+## Automatically lint the project on change
 ```sh
-build
+cargo watch -x "clippy --all-features"
 ```
 
-### Deploy project
+## Build vcpkg dependencies in the project
 ```sh
-deploy <version> <access-token>
+cargo vcpkg build
+```
+
+## Build the project
+```sh
+cargo build
+```
+
+## Automatically build the project on change
+```sh
+cargo watch -x build
+```
+
+## Test the project
+```sh
+cargo test
+```
+
+## Automatically test the project on change
+```sh
+cargo watch -x test
+```
+
+## Run the project
+```sh
+cargo run
 ```
