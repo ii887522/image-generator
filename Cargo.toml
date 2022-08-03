@@ -9,6 +9,7 @@ keywords = ["sample", "image", "generator", "cli", "desktop"]
 exclude = [
   ".github/*",
   ".vscode/*",
+  "docs/*",
   ".editorconfig",
   ".gitignore",
   "CODE_OF_CONDUCT.md",
