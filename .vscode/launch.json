@@ -1,0 +1,42 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'image-generator'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=image-generator",
+          "--package=image-generator"
+        ],
+        "filter": {
+          "name": "image-generator",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'image-generator'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=image-generator",
+          "--package=image-generator"
+        ],
+        "filter": {
+          "name": "image-generator",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

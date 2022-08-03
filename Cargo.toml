@@ -1,6 +1,6 @@
 [package]
 name = "image-generator"
-version = "1.1.0"
+version = "1.1.1"
 edition = "2021"
 description = "A CLI tool used to generate many sample images with different sizes and colors for testing purposes."
 repository = "https://github.com/ii887522/image-generator"
@@ -9,6 +9,7 @@ keywords = ["sample", "image", "generator", "cli", "desktop"]
 exclude = [
   ".github/*",
   ".vscode/*",
+  "docs/*",
   ".editorconfig",
   ".gitignore",
   "CODE_OF_CONDUCT.md",
