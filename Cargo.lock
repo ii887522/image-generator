@@ -432,7 +432,7 @@ dependencies = [
 
 [[package]]
 name = "image-generator"
-version = "1.1.0"
+version = "1.1.1"
 dependencies = [
  "async-std",
  "futures",
