@@ -2,12 +2,6 @@ use iron_ingot::UBound;
 use std::ptr::copy_nonoverlapping;
 
 #[derive(Copy, Clone, Debug)]
-pub(crate) struct Arg<'a> {
-  pub dst: *mut u8,
-  pub src: &'a [u8],
-}
-
-#[derive(Copy, Clone, Debug)]
 pub(crate) struct AtlasInstanceFlow {
   dst: *mut u8,
   src: *const u8,
@@ -16,7 +10,7 @@ pub(crate) struct AtlasInstanceFlow {
 unsafe impl Send for AtlasInstanceFlow {}
 
 impl AtlasInstanceFlow {
-  pub(crate) const fn new(Arg { dst, src }: Arg) -> Self {
+  pub(crate) const fn new(src: &[u8], dst: *mut u8) -> Self {
     Self {
       dst,
       src: src.as_ptr(),

@@ -1,5 +1,5 @@
 use crate::{
-  atlas_instance_flow::{self, AtlasInstanceFlow},
+  atlas_instance_flow::AtlasInstanceFlow,
   consts::{ATLAS_GAP, ATLAS_INSTANCE_SIZE, INSTANCE_CAP},
   gl_batch::{self, GLBatch},
   rect::Rect,
@@ -134,10 +134,10 @@ impl GLAtlasBatch {
       let cpu_count = num_cpus::get();
       let mut tasks = Vec::with_capacity(cpu_count + 1);
       let sub_len = self.instance_count / cpu_count * ATLAS_INSTANCE_SIZE;
-      let instance_flow = AtlasInstanceFlow::new(atlas_instance_flow::Arg {
-        dst: self.proto.get_dst().add(self.proto.get_current_dst_id()),
-        src: &self.src,
-      });
+      let instance_flow = AtlasInstanceFlow::new(
+        &self.src,
+        self.proto.get_dst().add(self.proto.get_current_dst_id()),
+      );
       if sub_len != 0 {
         for i in 0..cpu_count {
           tasks.push(task::spawn(
